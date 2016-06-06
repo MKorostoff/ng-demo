@@ -9,6 +9,8 @@
 <body ng-app="MyDemoApp">
 
   <div ng-controller="athleteSearch">
+    <label>filter</label>
+    <input ng-model="searchText" type="filter" name="filter" class="filter">
     <table border="1">
       <tr>
         <th ng-click="sort('id')">ID</th>
@@ -18,7 +20,7 @@
         <th>Vote For Me</th>
         <th>Fire</th>
       </tr>
-      <tr ng-repeat="name in names | orderBy:order" class="row row-{{name.id}} fired-{{name.fired}}">
+      <tr ng-repeat="name in names | orderBy:order | filter:searchText" class="row row-{{name.id}} fired-{{name.fired}}">
 
         <td>
           <span>{{name.id}}</span>
