@@ -10,13 +10,26 @@ app.controller('athleteSearch', function($scope, $http, $window) {
   });
   
   $scope.resize = function() {
-    console.log('foo');
     $scope.short = false;
     if (window.innerWidth < 800) {
       $scope.short = true;
     }
-  }
+  };
+
+  $scope.order = 'lastName';
+  $scope.sort = function(order) {
+    console.log(order);
+    $scope.order = order;
+  };
   
+  $scope.vote = function(id) {
+    $scope.names[id].votes++;
+  }
+
+  $scope.fire = function(id) {
+    $scope.names[id].fired = true;
+  }
+
   $scope.resize();
   angular.element($window).bind('resize', function() {
     $scope.resize();

@@ -4,30 +4,42 @@
   <title>Angular Demo</title>
   <script type="text/javascript" src="/js/angular.min.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
-</head>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css"></head>
 <body ng-app="MyDemoApp">
 
-<div ng-controller="athleteSearch">
-  <div ng-repeat="(id, name) in names">
-    <div class="row row-{{id}}">
-      <div>
-        
-        <div>
-          <label>ID:</label>
-          <span>{{id}}</span>
-        </div>
+  <div ng-controller="athleteSearch">
+    <table border="1">
+      <tr>
+        <th ng-click="sort('id')">ID</th>
+        <th ng-click="sort('longName')">First Name</th>
+        <th ng-click="sort('lastName')">Last Name</th>
+        <th ng-click="sort('-votes')">Votes</th>
+        <th>Vote For Me</th>
+        <th>Fire</th>
+      </tr>
+      <tr ng-repeat="name in names | orderBy:order" class="row row-{{name.id}} fired-{{name.fired}}">
 
-        <label>First name:</label>
-        <span ng-if="!short">{{name.longName}}</span>
-        <span ng-if="short">{{name.shortName}}</span>
-      </div>
-      <div>
-        <label>Last name:</label>
-        <span>{{name.lastName}}</span>
-      </div>
+        <td width="50px">
+          <span>{{name.id}}</span>
+        </td>
+        <td width="250px">
+          <span ng-if="!short">{{name.longName}}</span>
+          <span ng-if="short">{{name.shortName}}</span>
+        </td>
+        <td width="250px">
+          <span>{{name.lastName}}</span>
+        </td>
+        <td width="250px">
+          <span>{{name.votes}}</span>
+        </td>
+        <td width="250px">
+          <input ng-if="!name.fired" ng-click="vote(name.id)" type="submit" name="Vote" value="vote">
+        </td>
+        <td width="250px">
+          <input ng-if="!name.fired" ng-click="fire(name.id)" type="submit" name="Fire" value="fire">
+        </td>
+      </tr>
     </div>
-  </div>
-</div>
+</table>
 </body>
 </html>

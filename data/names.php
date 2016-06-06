@@ -7,9 +7,11 @@ $result = array();
 for ($i=0; $i < 120; $i++) { 
   $first = $faker->firstName;
   $result[] = array(
+    'id' => $i,
     'longName' => $first,
     'shortName' => substr($first, 0, 3),
     'lastName' => $last = $faker->lastName,
+    'votes' => 0,
   );
 }
 print json_encode($result);
