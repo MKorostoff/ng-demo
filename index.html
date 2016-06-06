@@ -20,7 +20,7 @@
         <th>Vote For Me</th>
         <th>Fire</th>
       </tr>
-      <tr ng-repeat="name in names | orderBy:order | filter:searchText" class="row row-{{name.id}} fired-{{name.fired}}">
+      <tr ng-repeat="(i, name) in names | orderBy:order | filter:searchText | limitTo:quantity" class="row row-{{name.id}} fired-{{name.fired}}">
 
         <td>
           <span>{{name.id}}</span>
@@ -44,5 +44,6 @@
       </tr>
     </div>
 </table>
+<input ng-click="loadMore()" value="load more" name="load more" type="submit">
 </body>
 </html>

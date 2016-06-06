@@ -23,6 +23,12 @@ app.controller('athleteSearch', function($scope, $http, $window) {
     $scope.names[id].fired = true;
     delete $scope.names[id].votes;
   }
+
+  $scope.quantity = 10;
+
+  $scope.loadMore = function() {
+    $scope.quantity = $scope.quantity + 10;    
+  }
   
 });
 
