@@ -16,19 +16,11 @@ app.controller('athleteSearch', function($scope, $http, $window) {
     }
   };
 
-  $scope.order = 'lastName';
+  $scope.order = 'id';
   $scope.sort = function(order) {
     console.log(order);
     $scope.order = order;
   };
-  
-  $scope.vote = function(id) {
-    $scope.names[id].votes++;
-  }
-
-  $scope.fire = function(id) {
-    $scope.names[id].fired = true;
-  }
 
   $scope.resize();
   angular.element($window).bind('resize', function() {

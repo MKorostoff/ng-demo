@@ -13,11 +13,8 @@
         <th ng-click="sort('id')">ID</th>
         <th ng-click="sort('longName')">First Name</th>
         <th ng-click="sort('lastName')">Last Name</th>
-        <th ng-click="sort('-votes')">Votes</th>
-        <th>Vote For Me</th>
-        <th>Fire</th>
       </tr>
-      <tr ng-repeat="name in names | orderBy:order" class="row row-{{name.id}} fired-{{name.fired}}">
+      <tr ng-repeat="name in names | orderBy:order" class="row row-{{name.id}}">
 
         <td width="50px">
           <span>{{name.id}}</span>
@@ -28,15 +25,6 @@
         </td>
         <td width="250px">
           <span>{{name.lastName}}</span>
-        </td>
-        <td width="250px">
-          <span>{{name.votes}}</span>
-        </td>
-        <td width="250px">
-          <input ng-if="!name.fired" ng-click="vote(name.id)" type="submit" name="Vote" value="vote">
-        </td>
-        <td width="250px">
-          <input ng-if="!name.fired" ng-click="fire(name.id)" type="submit" name="Fire" value="fire">
         </td>
       </tr>
     </div>
