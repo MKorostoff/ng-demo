@@ -9,14 +9,24 @@
 <body ng-app="MyDemoApp">
 
 <div ng-controller="athleteSearch">
-  <div>
-    <label>First name:</label>
-    <span ng-if="!short">{{longName}}</span>
-    <span ng-if="short">{{shortName}}</span>
-  </div>
-  <div>
-    <label>Last name:</label>
-    <span>{{lastName}}</span>
+  <div ng-repeat="(id, name) in names">
+    <div class="row row-{{id}}">
+      <div>
+        
+        <div>
+          <label>ID:</label>
+          <span>{{id}}</span>
+        </div>
+
+        <label>First name:</label>
+        <span ng-if="!short">{{name.longName}}</span>
+        <span ng-if="short">{{name.shortName}}</span>
+      </div>
+      <div>
+        <label>Last name:</label>
+        <span>{{name.lastName}}</span>
+      </div>
+    </div>
   </div>
 </div>
 </body>
