@@ -9,13 +9,6 @@ app.controller('athleteSearch', function($scope, $http, $window) {
     $scope.names = response.data
   });
   
-  $scope.resize = function() {
-    $scope.short = false;
-    if (window.innerWidth < 800) {
-      $scope.short = true;
-    }
-  };
-
   $scope.order = 'lastName';
   $scope.sort = function(order) {
     console.log(order);
@@ -23,18 +16,13 @@ app.controller('athleteSearch', function($scope, $http, $window) {
   };
   
   $scope.vote = function(id) {
-    $scope.names[id].votes++;
+    (!$scope.names[id].votes) ? $scope.names[id].votes = 1 : $scope.names[id].votes++;
   }
 
   $scope.fire = function(id) {
     $scope.names[id].fired = true;
+    delete $scope.names[id].votes;
   }
-
-  $scope.resize();
-  angular.element($window).bind('resize', function() {
-    $scope.resize();
-    $scope.$apply();
-  });
-
+  
 });
 
