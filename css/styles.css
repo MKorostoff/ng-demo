@@ -62,8 +62,8 @@ ul.pager {
 .page-9 .page-number-9,
 .page-10 .page-number-10,
 .page-11 .page-number-11,
-.page-12 .page-number-12
- {
+.page-12 .page-number-12,
+.page-13 .page-number-13 {
   font-weight: bold;
   text-decoration: underline;
 }

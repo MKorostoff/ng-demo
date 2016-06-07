@@ -9,7 +9,7 @@ app.controller('athleteSearch', function($scope, $http, $window) {
     $scope.names = response.data
     
     $scope.pages = new Array;
-    for (page = 1; page <= $scope.names.length / $scope.pageSize; page++) {
+    for (page = 1; page < $scope.names.length / $scope.pageSize + 1; page++) {
       $scope.pages.push(page);
     }
 
@@ -46,7 +46,7 @@ app.controller('athleteSearch', function($scope, $http, $window) {
   
   $scope.gotoPage = function(page) {
     $scope.currentPage = page;
-    $scope.firstItem = page * $scope.pageSize;    
+    $scope.firstItem = (page - 1) * $scope.pageSize;    
   }
 
 });
