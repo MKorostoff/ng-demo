@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 $faker = Faker\Factory::create();
 
 $result = array();
-for ($i=0; $i < 120; $i++) { 
+for ($i=0; $i < 125; $i++) { 
   $first = $faker->firstName;
   $result[] = array(
     'id' => $i,

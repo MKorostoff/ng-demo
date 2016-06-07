@@ -7,11 +7,16 @@ app.controller('athleteSearch', function($scope, $http, $window) {
     url: '/data/names.php'
   }).then(function successCallback(response) {
     $scope.names = response.data
+    
+    $scope.pages = new Array;
+    for (page = 1; page <= $scope.names.length / $scope.pageSize; page++) {
+      $scope.pages.push(page);
+    }
+
   });
   
   $scope.order = 'lastName';
   $scope.sort = function(order) {
-    console.log(order);
     $scope.order = order;
   };
   
@@ -19,16 +24,30 @@ app.controller('athleteSearch', function($scope, $http, $window) {
     (!$scope.names[id].votes) ? $scope.names[id].votes = 1 : $scope.names[id].votes++;
   }
 
+  //Fire the employee
   $scope.fire = function(id) {
     $scope.names[id].fired = true;
     delete $scope.names[id].votes;
   }
 
-  $scope.quantity = 10;
+  $scope.firstItem = 0;
+  $scope.pageSize = 10;
+  $scope.currentPage = 1;
 
-  $scope.loadMore = function() {
-    $scope.quantity = $scope.quantity + 10;    
+  $scope.nextPage = function() {
+    $scope.firstItem = $scope.firstItem + $scope.pageSize;    
+    $scope.currentPage++;
+  }
+
+  $scope.previousPage = function() {
+    $scope.firstItem = $scope.firstItem - $scope.pageSize;    
+    $scope.currentPage--;
   }
   
+  $scope.gotoPage = function(page) {
+    $scope.currentPage = page;
+    $scope.firstItem = page * $scope.pageSize;    
+  }
+
 });
 

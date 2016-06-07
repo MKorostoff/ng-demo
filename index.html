@@ -20,7 +20,7 @@
         <th>Vote For Me</th>
         <th>Fire</th>
       </tr>
-      <tr ng-repeat="(i, name) in names | orderBy:order | filter:searchText | limitTo:quantity" class="row row-{{name.id}} fired-{{name.fired}}">
+      <tr ng-repeat="(i, name) in names | orderBy:order | filter:searchText | limitTo:pageSize:firstItem" class="row row-{{name.id}} fired-{{name.fired}}">
 
         <td>
           <span>{{name.id}}</span>
@@ -36,14 +36,17 @@
           <span>{{name.votes}}</span>
         </td>
         <td>
-          <input ng-if="!name.fired" ng-click="vote(name.id)" type="submit" name="Vote" value="vote">
-        </td>
+          <input ng-if="!name.fired" ng-click="vote(name.id)" type="submit" name="Vote" value="vote"></td>
         <td>
-          <input ng-if="!name.fired" ng-click="fire(name.id)" type="submit" name="Fire" value="fire">
-        </td>
+          <input ng-if="!name.fired" ng-click="fire(name.id)" type="submit" name="Fire" value="fire"></td>
       </tr>
-    </div>
-</table>
-<input ng-click="loadMore()" value="load more" name="load more" type="submit">
+    </table>
+    <br>
+    <input ng-disabled="!(currentPage > 1)" ng-click="previousPage()" value="Previous page" name="Previous" type="submit">
+    <ul class="pager page-{{currentPage}}">
+      <li ng-click="gotoPage(page)" class="page-number page-number-{{page}}" ng-repeat="page in pages">{{page}}</li>
+    </ul>
+    <input ng-disabled="!(currentPage < pages.length)" ng-click="nextPage()" value="Next page" name="Next" type="submit">
+  </div>
 </body>
 </html>
