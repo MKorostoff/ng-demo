@@ -47,6 +47,9 @@
       <li ng-click="gotoPage(page)" class="page-number page-number-{{page}}" ng-repeat="page in pages">{{page}}</li>
     </ul>
     <input ng-disabled="!(currentPage < pages.length)" ng-click="nextPage()" value="Next page" name="Next" type="submit">
+    <div>
+      <input ng-click="save()" type="submit" name="Save" value="Save">
+    </div>
   </div>
 </body>
 </html>

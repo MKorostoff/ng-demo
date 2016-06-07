@@ -49,5 +49,13 @@ app.controller('athleteSearch', function($scope, $http, $window) {
     $scope.firstItem = (page - 1) * $scope.pageSize;    
   }
 
+  $scope.save = function() {
+    $http({
+      method : 'POST',
+      url : '/data/submit.php',
+      data : $scope.names
+    })
+  }
+
 });
 
