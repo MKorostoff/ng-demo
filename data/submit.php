@@ -1,6 +1,5 @@
 <?php
 $data = file_get_contents("php://input");
-$objData = json_decode($data);
-$output = print_r($objData, true);
-file_put_contents('/tmp/files.txt', $output);
-// file_put_contents('/tmp/file.txt', 'hi');
+$data = json_decode($data);
+$data = json_encode($data, JSON_PRETTY_PRINT);
+file_put_contents('/tmp/files.txt', $data);
