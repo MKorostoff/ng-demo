@@ -18,7 +18,6 @@ app.controller('athleteSearch', function($scope, $http, $window) {
 
   $scope.order = 'id';
   $scope.sort = function(order) {
-    console.log(order);
     $scope.order = order;
   };
 
