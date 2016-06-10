@@ -10,7 +10,6 @@ app.controller('athleteSearch', function($scope, $http, $window) {
   });
   
   $scope.resize = function() {
-    console.log('foo');
     $scope.short = false;
     if (window.innerWidth < 800) {
       $scope.short = true;
